@@ -1,0 +1,52 @@
+@import "../../../../../public/assets/_scss/variables.scss";
+
+.title-sidebar {
+  font-weight: 600;
+  font-size: 1.2rem;
+  img {
+    height: 4rem;
+  }
+  text-align: center;
+}
+
+ul {
+  display: contents;
+  list-style: none;
+  li {
+    transition: all 0.3s ease-in-out;
+    margin: 1rem 0;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    .bx {
+      margin-right: 0.5rem;
+    }
+    a {
+      text-decoration: none;
+    }
+    .bx,
+    a {
+      color: $darkBlue;
+      transition: color 0.3s ease-in-out;
+    }
+  }
+}
+
+.mobile {
+  margin: 0 !important;
+}
+
+.item-menu:hover {
+  background: $softOrange;
+  .bx,
+  a {
+    color: $orange !important;
+  }
+}
+
+.active {
+  background: $softOrange;
+  .bx,
+  a {
+    color: $orange !important;
+  }
+}

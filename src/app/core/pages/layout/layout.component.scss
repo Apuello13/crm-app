@@ -1,0 +1,42 @@
+@import "../../../../../public/assets/_scss/variables.scss";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex: 1.1;
+  transition: flex 0.5s ease-in-out;
+  background: $white;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+  background: $softBlue;
+  .content {
+    flex: 6;
+  }
+}
+
+#sidebar-mobile {
+  padding: 0.5rem;
+  display: none;
+  background: $white;
+}
+
+#sidebar-mobile .bx:hover {
+  color: $orange;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+  #sidebar-mobile {
+    display: block !important;
+  }
+}

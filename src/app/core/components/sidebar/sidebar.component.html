@@ -1,0 +1,67 @@
+<div *ngIf="isMobile; else elseBlock">
+  <img
+    routerLink="/home"
+    src="assets/img/logo-mobile.svg"
+    class="pointer"
+    alt="Logo Universidad Compensar"
+    matTooltip="Logo Universidad Compensar"
+    width="100%"
+    height="20px"
+  />
+  <ul>
+    <li routerLink="/home" class="pointer item-menu" routerLinkActive="active">
+      <i class="bx bxs-home-alt-2 mobile" matTooltip="Home"></i>
+    </li>
+    <li
+      *ngFor="let menu of menus"
+      class="pointer item-menu"
+      routerLinkActive="active"
+    >
+      <i [class]="menu.icon" class="mobile"></i>
+      <!-- [matTooltip]="menu.name" -->
+    </li>
+    <li
+      *ngIf="isVisibleSettingModule"
+      class="pointer"
+      routerLinkActive="active"
+      [matMenuTriggerFor]="menu"
+    >
+      <i class="bx bxs-cog mobile" matTooltip="Configuraciones"></i>
+    </li>
+    <mat-menu #menu="matMenu">
+      <ul></ul>
+    </mat-menu>
+  </ul>
+</div>
+<ng-template #elseBlock>
+  <div class="title-sidebar p-sides" *ngIf="!isMobile">
+    <img
+      routerLink="/home"
+      src="assets/img/logo.png"
+      class="pointer"
+      alt="Logo Elyon Yireh"
+    />
+  </div>
+  <mat-accordion>
+    <div class="p-sides">
+      <ul>
+        <li
+          routerLink="/home"
+          class="pointer item-menu"
+          routerLinkActive="active"
+        >
+          <i class="bx bxs-home-alt-2"></i>
+          <a>Home</a>
+        </li>
+        <li
+          *ngFor="let menu of menus"
+          class="pointer item-menu"
+          routerLinkActive="active"
+        >
+          <i [class]="menu.icon"></i>
+          <a>{{ menu.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </mat-accordion>
+</ng-template>

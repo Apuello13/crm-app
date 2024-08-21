@@ -1,1 +1,85 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../public/assets/_scss/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $nunito !important;
+}
+
+body {
+  background: $softBlue;
+}
+
+//Flex
+
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+//Padding
+
+.p-sides {
+  padding: 1rem 1.5rem;
+}
+
+//Text align
+
+.text-right {
+  text-align: right;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-center {
+  text-align: center;
+}
+
+//Font Weigth
+
+.f-bold {
+  font-weight: bold;
+}
+
+//Buttons
+.btn {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.3rem;
+  margin: 0 0.1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+//Shadows
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+//Actions
+
+.pointer {
+  cursor: pointer;
+}
