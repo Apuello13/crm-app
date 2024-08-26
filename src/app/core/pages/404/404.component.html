@@ -1,1 +1,23 @@
-<p>404 works!</p>
+<div
+  class="flex align-items-center justify-content-center"
+  style="height: 100vh"
+>
+  <div
+    class="bg-white shadow rounded flex align-items-center justify-content-center"
+    id="container-not-found"
+  >
+    <div>
+      <h1>Ooopps!!</h1>
+      <p class="mt-2">
+        <span class="text-primary f-bold">Lo siento,</span> esta pagina no esta
+        disponible.
+      </p>
+      <button class="btn btn-primary mt-2" (click)="goHome()">
+        Volver al inicio
+      </button>
+    </div>
+    <div>
+      <img src="assets/img/not_found.svg" alt="" />
+    </div>
+  </div>
+</div>

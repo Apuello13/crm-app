@@ -1,0 +1,76 @@
+<div class="flex align-items-center justify-content-between">
+  <div class="container-filters" *ngIf="showSearch">
+    <div class="container-search shadow flex align-items-center">
+      <i class="bx bx-search-alt"></i>
+      <input type="text" placeholder="Buscar" [(ngModel)]="searchValue" />
+    </div>
+  </div>
+  <i
+    *ngIf="showExcelButton"
+    matTooltip="Descargar Excel"
+    class="btn-excel bx bxs-file-doc pointer"
+  ></i>
+</div>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 full-width-field"
+  #table
+>
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.headerName"
+  >
+    <th mat-header-cell *matHeaderCellDef>{{ column.headerName }}</th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="column.headerName !== 'Acciones'; else elseBlock">{{
+        column?.isObject
+          ? getObjectValue(element, column.field)
+          : column.isStatus
+          ? getCompleteStatus(element[column.field])
+          : column.isDate
+          ? (element[column.field] | date : "dd-MM-YY hh:mm")
+          : element[column.field]
+      }}</span>
+      <ng-template #elseBlock>
+        <i
+          *ngIf="isExistsAction('M')"
+          matTooltip="Agregar imagen o video"
+          class="text-primary bx bxs-file-plus action-table pointer"
+          (click)="openModal(element)"
+        ></i>
+        <i
+          *ngIf="isExistsAction('V')"
+          matTooltip="Ver detalle"
+          class="bx bxs-detail text-primary action-table pointer"
+          (click)="view(element)"
+        ></i>
+        <i
+          *ngIf="isExistsAction('E')"
+          matTooltip="Editar"
+          class="bx bxs-edit-alt text-orange action-table pointer"
+          (click)="edit(element, column.field)"
+        ></i>
+        <i
+          *ngIf="isExistsAction('D')"
+          matTooltip="Eliminar"
+          class="bx bxs-trash-alt text-red action-table pointer"
+          (click)="confirmAction(element[column.field])"
+        ></i>
+      </ng-template>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="getHeadersName()"></tr>
+  <tr mat-row *matRowDef="let row; columns: getHeadersName()"></tr>
+  <tr class="mat-row text-center" *matNoDataRow>
+    <td class="mat-cell" colspan="6">No hay informacion para mostrar</td>
+  </tr>
+</table>
+<mat-paginator
+  #paginator
+  [length]="rows.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  showFirstLastButtons
+  aria-label="Select page of users"
+></mat-paginator>

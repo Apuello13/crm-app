@@ -1,0 +1,17 @@
+<app-title name="Clientes" [showCreateButton]="false"></app-title>
+<app-filter></app-filter>
+<div class="text-right">
+  <button class="btn btn-primary-outline" (click)="toggleTypeView()">
+    Cambiar vista
+  </button>
+</div>
+<app-table
+  [columns]="columns"
+  [rows]="[]"
+  [actions]="[]"
+  [fileNameExcel]="'Clientes'"
+  *ngIf="typeView === 'table'; else grid"
+></app-table>
+<ng-template #grid>
+  <app-grid></app-grid>
+</ng-template>
