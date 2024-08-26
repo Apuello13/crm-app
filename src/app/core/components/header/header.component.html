@@ -1,14 +1,14 @@
 <header class="p-sides">
   <p>Hola {{ userName }},</p>
   <div class="flex align-items-center justify-content-between">
-    <h2 class="f-bold">Bienvenido a Elyon Cmr</h2>
+    <h2 class="f-bold">Bienvenido a Vinculum</h2>
     <div>
       <i class="bx bx-bell pointer"></i>
       <i class="bx bx-user pointer" [matMenuTriggerFor]="menu"></i>
     </div>
   </div>
 </header>
-<mat-menu #menu="matMenu">
+<mat-menu #menu="matMenu" class="mat-menu-content">
   <div class="item pointer">Ajustes</div>
   <div class="item pointer" (click)="logOut()">Cerrar sesión</div>
 </mat-menu>

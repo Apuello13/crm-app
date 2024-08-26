@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AlertService } from '../../services/alert.service';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  _alert: AlertService = inject(AlertService);
+  _navigation: NavigationService = inject(NavigationService);
+
   userName: string = '';
 
-  logOut(): void {}
+  logOut(): void {
+    this._alert.confirm().then((result) => {
+      if (result.isConfirmed) {
+        this._navigation.goTo('/login');
+      }
+    });
+  }
 }

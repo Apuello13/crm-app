@@ -9,7 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { NotFoundComponent } from './pages/404/404.component';
 
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,14 @@ import { RouterOutlet } from '@angular/router';
     SidebarComponent,
     LayoutComponent,
     NotFoundComponent,
+    HomeComponent,
   ],
-  imports: [CommonModule, RouterOutlet, MatMenuModule, MatExpansionModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatMenuModule,
+    MatExpansionModule,
+    RouterModule,
+  ],
 })
 export class CoreModule {}

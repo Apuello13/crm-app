@@ -1,21 +1,33 @@
 <div class="container-login">
   <div class="shadow sub-container-login">
     <div class="container-form">
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <img src="assets/img/logo.png" alt="Logo Elyon Yireh" />
         <h1>Bienvenido/a de vuelta</h1>
         <h3>Ingresa con tu usuario y contraseña</h3>
         <div class="form-group">
           <i class="bx bxs-user"></i>
-          <input placeholder="Usuario" />
+          <input placeholder="Usuario" formControlName="email" />
         </div>
         <div class="form-group">
           <i class="bx bxs-lock-alt"></i>
-          <input type="password" placeholder="Contraseña" />
+          <input
+            [type]="isShowPassword ? 'text' : 'password'"
+            placeholder="Contraseña"
+            formControlName="password"
+          />
+        </div>
+        <div class="toggle-password">
+          <input type="checkbox" class="pointer" (change)="togglePassword()" />
+          {{ isShowPassword ? "Ocultar" : "Mostrar" }} contraseña
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-block btn-login">
+            <button
+              type="submit"
+              [disabled]="loginForm.invalid"
+              class="btn btn-primary btn-block btn-login"
+            >
               Ingresar
             </button>
           </div>

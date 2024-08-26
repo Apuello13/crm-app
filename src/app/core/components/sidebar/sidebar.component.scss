@@ -35,14 +35,7 @@ ul {
   margin: 0 !important;
 }
 
-.item-menu:hover {
-  background: $softOrange;
-  .bx,
-  a {
-    color: $orange !important;
-  }
-}
-
+.item-menu:hover,
 .active {
   background: $softOrange;
   .bx,

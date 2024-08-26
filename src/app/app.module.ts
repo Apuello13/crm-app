@@ -3,15 +3,24 @@ import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CoreModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    CoreModule,
+    AuthModule,
+    AppRoutingModule,
+    SweetAlert2Module.forRoot(),
+  ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })

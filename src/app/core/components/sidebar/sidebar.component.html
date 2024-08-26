@@ -46,16 +46,9 @@
     <div class="p-sides">
       <ul>
         <li
-          routerLink="/home"
-          class="pointer item-menu"
-          routerLinkActive="active"
-        >
-          <i class="bx bxs-home-alt-2"></i>
-          <a>Home</a>
-        </li>
-        <li
           *ngFor="let menu of menus"
           class="pointer item-menu"
+          [routerLink]="menu.path"
           routerLinkActive="active"
         >
           <i [class]="menu.icon"></i>
