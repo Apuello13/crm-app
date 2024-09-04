@@ -1,9 +1,7 @@
 import { BasicLook } from '../../core/models/basic-look';
 
-export interface User {
-  id: number;
+export interface UserLogIn {
   name: string;
-  username: string;
-  password: string;
+  token: string;
   role: BasicLook;
 }

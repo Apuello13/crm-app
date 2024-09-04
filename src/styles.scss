@@ -94,6 +94,10 @@ body {
   cursor: pointer;
 }
 
+.btn:disabled {
+  opacity: 0.6;
+}
+
 .btn-primary-outline {
   border: 1px solid $primary;
   color: $primary;
@@ -185,6 +189,11 @@ body {
 .mat-header-cell {
   font-weight: 700;
   font-size: 0.9rem;
+}
+
+.action-table {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
 }
 
 //Forms

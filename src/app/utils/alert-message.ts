@@ -5,4 +5,6 @@ export const AlertMessage = {
   GENERAL_SUCCESS: 'Proceso ejecutado con exito',
   GENERAL_ERROR: 'Se ha presentado un error. Comuniquese con soporte',
   GENERAL_CONFIRM: 'Desea realizar dicha accion?',
+  FORBIDEN: 'No tiene permisos para ingresar',
+  WELCOME: 'Bienvenido',
 };

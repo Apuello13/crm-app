@@ -1,33 +1,40 @@
-<app-title
-  name="Formulario Usuarios"
-  [showCreateButton]="false"
-  [isViewForm]="true"
-></app-title>
-<div class="container-menu shadow">
-  <div class="row">
-    <div class="col-lg-6">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" required />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-6">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Email</mat-label>
-        <input matInput type="text" required />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-6">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="text" required />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-6">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Rol</mat-label>
-        <input matInput type="text" required />
-      </mat-form-field>
+<form [formGroup]="userForm" (ngSubmit)="save()">
+  <app-title
+    name="Formulario Usuarios"
+    [showCreateButton]="false"
+    [isViewForm]="true"
+    [disabledSubmitButton]="userForm.invalid"
+  ></app-title>
+  <div class="container-menu shadow">
+    <div class="row">
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" required formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" required formControlName="username" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="text" required formControlName="password" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role.id">
+              {{ role.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
-</div>
+</form>

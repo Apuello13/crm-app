@@ -8,9 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
+import { CookieService } from 'ngx-cookie-service';
+
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { AppComponent } from './app.component';
+
+import { errorInterceptor } from './core/services/error.service';
+import { tokenInterceptor } from './core/services/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +31,15 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     SweetAlert2Module.forRoot(),
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([errorInterceptor, tokenInterceptor])
+    ),
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

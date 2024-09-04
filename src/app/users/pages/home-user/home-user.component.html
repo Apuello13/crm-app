@@ -1,2 +1,7 @@
 <app-title name="Usuarios" [showCreateButton]="true"></app-title>
-<app-table [columns]="columns" [actions]="actions"></app-table>
+<app-table
+  [columns]="columns"
+  [actions]="actions"
+  [rows]="users"
+  (sendEvent)="getEventTable($event)"
+></app-table>

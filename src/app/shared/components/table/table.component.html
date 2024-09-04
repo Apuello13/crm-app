@@ -48,13 +48,13 @@
         <i
           *ngIf="isExistsAction('E')"
           matTooltip="Editar"
-          class="bx bxs-edit-alt text-orange action-table pointer"
+          class="bx bxs-edit-alt text-primary action-table pointer"
           (click)="edit(element, column.field)"
         ></i>
         <i
           *ngIf="isExistsAction('D')"
           matTooltip="Eliminar"
-          class="bx bxs-trash-alt text-red action-table pointer"
+          class="bx bxs-trash-alt text-danger action-table pointer"
           (click)="confirmAction(element[column.field])"
         ></i>
       </ng-template>
