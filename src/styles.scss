@@ -209,6 +209,20 @@ body {
   width: 100%;
 }
 
+.mdc-notched-outline__leading {
+  border-left: 0 !important;
+  border-radius: 0 !important;
+}
+
+.mat-mdc-notch-piece {
+  border-top: 0 !important;
+}
+
+.mdc-notched-outline__trailing {
+  border-right: 0 !important;
+  border-radius: 0 !important;
+}
+
 //Margins
 .mt-1 {
   margin-top: 1rem;

@@ -10,8 +10,14 @@ export class SessionService {
     this._cookie.set(this.userKey, JSON.stringify(user));
   }
 
-  getUser(): UserLogIn {
-    return JSON.parse(this._cookie.get(this.userKey));
+  getUser(): UserLogIn | null {
+    let userLogin!: UserLogIn | null;
+    try {
+      userLogin = JSON.parse(this._cookie.get(this.userKey));
+    } catch (e) {
+      userLogin = null;
+    }
+    return userLogin;
   }
 
   isExistSession(): boolean {

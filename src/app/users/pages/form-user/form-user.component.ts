@@ -8,6 +8,7 @@ import { NavigationService } from '../../../core/services/navigation.service';
 import { User } from '../../models/user';
 import { AlertMessage } from '../../../utils/alert-message';
 import { USER_MESSAGE } from '../../utils/user-message';
+import { categories } from '../../utils/category';
 
 @Component({
   selector: 'app-form-user',
@@ -22,8 +23,11 @@ export class FormUserComponent implements OnInit {
   formBuild: FormBuilder = inject(FormBuilder);
 
   isEdit: boolean = false;
+  isAdviser: boolean = true;
+  isShowPassword: boolean = false;
 
   roles: BasicLook[] = [];
+  categories = categories;
 
   userForm!: FormGroup;
 
@@ -40,6 +44,7 @@ export class FormUserComponent implements OnInit {
       username: ['', Validators.required],
       role: ['', Validators.required],
       password: ['', Validators.required],
+      categories: { value: '', disabled: this.isAdviser },
     });
   }
 
@@ -70,6 +75,18 @@ export class FormUserComponent implements OnInit {
     this._role
       .findAll()
       .subscribe({ next: (response) => (this.roles = response) });
+  }
+
+  toggleIsAdviser({ value }: any): void {
+    const roleValue: number = value;
+    const ADMIN_ID: number = 1;
+    this.isAdviser = roleValue !== ADMIN_ID;
+    if (this.isAdviser) this.userForm.get('categories')?.enable();
+    else this.userForm.get('categories')?.disable();
+  }
+
+  toggleIsPassword(): void {
+    this.isShowPassword = !this.isShowPassword;
   }
 
   save(): void {

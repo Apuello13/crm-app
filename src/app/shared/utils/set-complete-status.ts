@@ -1,11 +1,10 @@
-import { Status } from '../../utils/status';
+import { State } from '../../core/models/state';
+import { STATUS } from '../../utils/status';
 
-export function setCompleteStatus(status: string): string {
-  if (status === ShortStatus.ACTIVE) return Status.ACTIVE;
-  else return Status.INACTIVE;
-}
-
-enum ShortStatus {
-  ACTIVE = 'A',
-  INACTIVE = 'I',
+export function setCompleteStatus(key: string): string {
+  const value: string | undefined = STATUS.find(
+    (status: State) => status.key === key
+  )?.value;
+  if (!value) return '';
+  return value;
 }

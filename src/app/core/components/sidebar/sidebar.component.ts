@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Access } from '../../models/acces';
+import { ROUTES } from '../../../utils/routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,13 +19,13 @@ export class SidebarComponent implements OnInit {
 
   setAccess(): void {
     this.menus = [
-      { id: 1, name: 'Home', icon: 'bx bxs-home-alt-2', path: '/home' },
-      { id: 2, name: 'Usuarios', icon: 'bx bxs-user', path: '/users' },
+      { id: 1, name: 'Home', icon: 'bx bxs-home-alt-2', path: ROUTES.HOME },
+      { id: 2, name: 'Usuarios', icon: 'bx bxs-user', path: ROUTES.USERS },
       {
         id: 3,
         name: 'Clientes',
         icon: 'bx bxs-user-account',
-        path: '/clients',
+        path: ROUTES.CUSTOMERS,
       },
     ];
   }

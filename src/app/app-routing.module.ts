@@ -8,25 +8,21 @@ import { HomeComponent } from './core/pages/home/home.component';
 import { authGuard } from './admin/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home',
+    path: '',
     component: LayoutComponent,
-    children: [{ path: '', component: HomeComponent }],
-    canActivate: [authGuard],
+    children: [{ path: 'home', component: HomeComponent }],
   },
   {
     path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((u) => u.UsersModule),
-    canActivate: [authGuard],
   },
   {
     path: 'clients',
     loadChildren: () =>
       import('./admin/admin.module').then((a) => a.AdminModule),
-    canActivate: [authGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];

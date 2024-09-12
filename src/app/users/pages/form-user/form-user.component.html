@@ -16,21 +16,58 @@
       <div class="col-lg-6">
         <mat-form-field appearance="outline" class="full-width-field">
           <mat-label>Email</mat-label>
-          <input matInput type="text" required formControlName="username" />
+          <input
+            matInput
+            type="text"
+            required
+            formControlName="username"
+            autocomplete="username"
+          />
         </mat-form-field>
       </div>
       <div class="col-lg-6">
         <mat-form-field appearance="outline" class="full-width-field">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="text" required formControlName="password" />
+          <input
+            matInput
+            [type]="isShowPassword ? 'text' : 'password'"
+            required
+            formControlName="password"
+            autocomplete="current-password"
+          />
+          <i
+            matSuffix
+            [class]="
+              isShowPassword
+                ? 'bx bxs-lock-open pointer text-primary'
+                : 'bx bxs-lock pointer text-primary'
+            "
+            (click)="toggleIsPassword()"
+          ></i>
         </mat-form-field>
       </div>
       <div class="col-lg-6">
         <mat-form-field appearance="outline" class="full-width-field">
           <mat-label>Rol</mat-label>
-          <mat-select formControlName="role">
+          <mat-select
+            formControlName="role"
+            (selectionChange)="toggleIsAdviser($event)"
+          >
             <mat-option *ngFor="let role of roles" [value]="role.id">
               {{ role.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Categorias</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category.value"
+            >
+              {{ category.label }}
             </mat-option>
           </mat-select>
         </mat-form-field>

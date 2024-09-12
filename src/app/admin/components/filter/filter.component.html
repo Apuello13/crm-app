@@ -1,34 +1,46 @@
-<div class="row mt-1">
-  <div class="col-lg-2 f-bold flex align-items-center justify-content-center">
-    Filtros:
+<form [formGroup]="filterForm" (ngSubmit)="search()">
+  <div class="row mt-1">
+    <div class="col-lg-2 f-bold flex align-items-center justify-content-center">
+      Filtros:
+    </div>
+    <div class="col-lg-9 row">
+      <div class="col-lg-4">
+        <mat-form-field
+          appearance="outline"
+          class="full-width-field legacy-appearance"
+        >
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Celular</mat-label>
+          <input matInput type="text" formControlName="phone" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Programa</mat-label>
+          <input matInput type="text" formControlName="program" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="state">
+            <mat-option *ngFor="let state of states" [value]="state.key">
+              {{ state.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 container-buttons">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="button" (click)="clear()" class="btn btn-primary-outline">
+          Limpiar
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="col-lg-9 row">
-    <div class="col-lg-4">
-      <mat-form-field
-        appearance="outline"
-        class="full-width-field legacy-appearance"
-      >
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-4">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Celular</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-4">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Programa</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-    </div>
-    <div class="col-lg-4">
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Estado</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-    </div>
-  </div>
-</div>
+</form>
