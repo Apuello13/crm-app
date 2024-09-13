@@ -5,6 +5,8 @@ import { ClientDataService } from '../../services/client.data.service';
 import { Customer } from '../../models/customer';
 import { Actions } from '../../../utils/actions';
 import { Event } from '../../../shared/models/event';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogCustomerComponent } from '../../components/dialog-customer/dialog-customer.component';
 
 @Component({
   selector: 'app-clients',
@@ -13,6 +15,7 @@ import { Event } from '../../../shared/models/event';
 })
 export class ClientsComponent implements OnInit {
   _clientData: ClientDataService = inject(ClientDataService);
+  _dialog: MatDialog = inject(MatDialog);
 
   customers: Customer[] = [];
 
@@ -45,7 +48,13 @@ export class ClientsComponent implements OnInit {
 
   deleteCustomer(customerId: number): void {}
 
-  openDialog(customer: Customer): void {}
+  openDialog(customer: Customer): void {
+    const dialogConfig: MatDialogConfig = new MatDialogConfig();
+    dialogConfig.width = '80%';
+    dialogConfig.height = '80%';
+    dialogConfig.data = customer;
+    this._dialog.open(DialogCustomerComponent, dialogConfig);
+  }
 
   toggleTypeView(): void {
     this.typeView = this.typeView === 'table' ? 'grid' : 'table';
