@@ -50,8 +50,8 @@ export class ClientsComponent implements OnInit {
 
   openDialog(customer: Customer): void {
     const dialogConfig: MatDialogConfig = new MatDialogConfig();
-    dialogConfig.width = '80%';
-    dialogConfig.height = '80%';
+    dialogConfig.minWidth = '60vw';
+    dialogConfig.minHeight = '40vw';
     dialogConfig.data = customer;
     this._dialog.open(DialogCustomerComponent, dialogConfig);
   }
