@@ -7,6 +7,8 @@ import { Actions } from '../../../utils/actions';
 import { Event } from '../../../shared/models/event';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogCustomerComponent } from '../../components/dialog-customer/dialog-customer.component';
+import { ClientService } from '../../services/client.service';
+import { AlertService } from '../../../core/services/alert.service';
 
 @Component({
   selector: 'app-clients',
@@ -15,7 +17,9 @@ import { DialogCustomerComponent } from '../../components/dialog-customer/dialog
 })
 export class ClientsComponent implements OnInit {
   _clientData: ClientDataService = inject(ClientDataService);
+  _client: ClientService = inject(ClientService);
   _dialog: MatDialog = inject(MatDialog);
+  _alert: AlertService = inject(AlertService);
 
   customers: Customer[] = [];
 
@@ -46,7 +50,16 @@ export class ClientsComponent implements OnInit {
     else if (event === Actions.DELETE) this.deleteCustomer(rowId);
   }
 
-  deleteCustomer(customerId: number): void {}
+  deleteCustomer(customerId: number): void {
+    this._client.deleteById(customerId).subscribe({
+      next: () => {
+        this.customers = this.customers.filter(
+          (customer) => customer.id !== customerId
+        );
+        this._alert.success();
+      },
+    });
+  }
 
   openDialog(customer: Customer): void {
     const dialogConfig: MatDialogConfig = new MatDialogConfig();

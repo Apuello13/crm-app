@@ -7,4 +7,5 @@ export const AlertMessage = {
   GENERAL_CONFIRM: 'Desea realizar dicha accion?',
   FORBIDEN: 'No tiene permisos para ingresar',
   WELCOME: 'Bienvenido',
+  CUSTOMER_UPDATE_STATUS: 'Estado del cliente actualizado con éxito',
 };

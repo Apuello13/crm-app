@@ -1,10 +1,10 @@
 export interface CustomerObservation {
   date: number;
-  observations: Observation[];
+  observations: IObservation[];
 }
 
-interface Observation {
+export interface IObservation {
   id: string;
   observation: string;
-  time: string;
+  time: number;
 }

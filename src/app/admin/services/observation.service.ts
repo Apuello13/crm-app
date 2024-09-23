@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observation } from '../models/observation';
-import { CustomerObservation } from '../models/customer-observation';
+import {
+  CustomerObservation,
+  IObservation,
+} from '../models/customer-observation';
 
 @Injectable()
 export class ObservationService {
@@ -10,7 +13,7 @@ export class ObservationService {
   private observationUrl: string = `${environment.apiUrl}/observation`;
 
   save(observation: Observation) {
-    return this._http.post(this.observationUrl, observation);
+    return this._http.post<IObservation>(this.observationUrl, observation);
   }
 
   getByCustomer(customerId: number) {
@@ -19,7 +22,7 @@ export class ObservationService {
     );
   }
 
-  deleteById(id: number) {
+  deleteById(id: string) {
     return this._http.delete(`${this.observationUrl}/${id}`);
   }
 }

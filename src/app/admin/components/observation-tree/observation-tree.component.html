@@ -15,9 +15,12 @@
         *ngFor="let object of observation.observations"
         class="card-observation flex align-items-center justify-content-between"
       >
-        <span>{{ object.time | date : "hh:mm" }}</span>
+        <span>{{ object.time | date : "hh:mm a" }}</span>
         <span>{{ object.observation }}</span>
-        <i class="bx bxs-trash-alt text-danger pointer"></i>
+        <i
+          (click)="confirmDelete(object.id)"
+          class="bx bxs-trash-alt text-danger pointer"
+        ></i>
       </div>
     </div>
   </mat-expansion-panel>

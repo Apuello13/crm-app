@@ -7,5 +7,6 @@ export interface Customer {
   neighborhood: string;
   program: string;
   category: string;
+  status: string;
   createdAt: number;
 }

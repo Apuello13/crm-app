@@ -9,4 +9,5 @@ export const STATUS = [
   { key: 'NOT_ANSWER', value: 'No respondio', color: '' },
   { key: 'CALL_LATER', value: 'Llama despues', color: '' },
   { key: 'RELATIVE_ANSWERED', value: 'Contesto un familiar', color: '' },
+  { key: 'NEW', value: 'Nuevo', color: '' },
 ] as State[];

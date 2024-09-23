@@ -32,10 +32,10 @@ export class FilterComponent implements OnInit {
 
   initForm(): void {
     this.filterForm = this.formBuilder.group({
-      name: '',
-      phone: '',
-      program: '',
-      state: '',
+      name: null,
+      phone: null,
+      program: null,
+      state: null,
     });
   }
 
