@@ -1,16 +1,36 @@
 @import "../../../../../public/assets/_scss/variables.scss";
 
+.card-container {
+  padding: 1rem;
+}
+
 .card-stats {
-  background: $white;
   border-radius: 5px;
   padding: 10px 20px;
   height: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
 
   .title {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
   }
 
   .mark {
-    font-size: 40px;
+    font-size: 30px;
+  }
+}
+
+.table {
+  margin-top: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background: $primary;
+    color: $white;
+    tr th {
+      padding: 0.5rem;
+    }
   }
 }
