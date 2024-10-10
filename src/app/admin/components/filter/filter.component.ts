@@ -35,7 +35,7 @@ export class FilterComponent implements OnInit {
       name: null,
       phone: null,
       program: null,
-      state: null,
+      status: null,
     });
   }
 

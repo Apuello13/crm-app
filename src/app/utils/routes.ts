@@ -3,4 +3,5 @@ export const ROUTES = {
   HOME: '/home',
   CUSTOMERS: '/clients',
   USERS: '/users',
+  REPORTS: '/reports',
 };

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { UserLogIn } from '../../auth/models/user';
 import { CookieService } from 'ngx-cookie-service';
+import { ROLE_CONTANTS } from '../../utils/role.constant';
 
 @Injectable({ providedIn: 'root' })
 export class SessionService {
@@ -26,5 +27,12 @@ export class SessionService {
 
   deleteSession(): void {
     this._cookie.delete(this.userKey);
+  }
+
+  isAdmin(): boolean {
+    const user: UserLogIn | null = this.getUser();
+    const adminRoleId: number = ROLE_CONTANTS.ADMIN_ROLE;
+    if (user) return user.role.id === adminRoleId;
+    return false;
   }
 }

@@ -28,7 +28,7 @@
       <div class="col-lg-4">
         <mat-form-field appearance="outline" class="full-width-field">
           <mat-label>Estado</mat-label>
-          <mat-select formControlName="state">
+          <mat-select formControlName="status">
             <mat-option *ngFor="let state of states" [value]="state.key">
               {{ state.value }}
             </mat-option>

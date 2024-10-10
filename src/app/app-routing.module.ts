@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((a) => a.AdminModule),
   },
+  {
+    path: 'reports',
+    loadChildren: () =>
+      import('./reports/reports.module').then((r) => r.ReportsModule),
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
