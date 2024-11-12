@@ -1,6 +1,7 @@
 export interface Customer {
   id: number;
   fullName: string;
+  document: string;
   phone: string;
   whatsappPhone: string;
   city: string;

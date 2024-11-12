@@ -24,11 +24,12 @@ export class FormClientComponent implements OnInit {
   initForm(): void {
     this.customerForm = this.formBuilder.group({
       id: 0,
-      fullName: ['', Validators.required],
-      phone: ['', Validators.required],
-      city: ['', Validators.required],
-      neighborhood: ['', Validators.required],
-      program: ['', Validators.required],
+      fullName: '',
+      document: '',
+      phone: '',
+      city: '',
+      neighborhood: '',
+      program: '',
       category: '',
       status: '',
       whatsappPhone: '',

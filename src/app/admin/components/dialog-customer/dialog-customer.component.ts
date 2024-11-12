@@ -15,6 +15,7 @@ import { State } from '../../../core/models/state';
 import { ClientService } from '../../services/client.service';
 import { AlertMessage } from '../../../utils/alert-message';
 import { UpdateStatus } from '../../models/update-status';
+import { NavigationService } from '../../../core/services/navigation.service';
 
 @Component({
   selector: 'app-dialog-customer',
@@ -27,6 +28,7 @@ export class DialogCustomerComponent implements OnInit {
   _observation: ObservationService = inject(ObservationService);
   _alert: AlertService = inject(AlertService);
   _customer: ClientService = inject(ClientService);
+  _navigation: NavigationService = inject(NavigationService);
 
   observationField: FormControl = new FormControl('');
   statusField: FormControl = new FormControl(this.customer.status);
@@ -52,8 +54,19 @@ export class DialogCustomerComponent implements OnInit {
   updateStatus({ value }: any): void {
     const updateStatus: UpdateStatus = { status: value };
     this._customer.updateStatus(this.customer.id, updateStatus).subscribe({
-      next: () => this._alert.success(AlertMessage.CUSTOMER_UPDATE_STATUS),
+      next: () => {
+        this._alert.success(AlertMessage.CUSTOMER_UPDATE_STATUS);
+        this.goToForm(value);
+      },
     });
+  }
+
+  goToForm(status: string): void {
+    const ENROLLMENT_STATUS: string = 'ENROLLMENT';
+    if (status === ENROLLMENT_STATUS) {
+      this.closeDialog();
+      this._navigation.goToWithQueryParams('/clients/form', this.customer.id);
+    }
   }
 
   save(): void {
