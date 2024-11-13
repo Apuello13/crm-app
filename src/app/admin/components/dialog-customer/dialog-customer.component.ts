@@ -16,6 +16,7 @@ import { ClientService } from '../../services/client.service';
 import { AlertMessage } from '../../../utils/alert-message';
 import { UpdateStatus } from '../../models/update-status';
 import { NavigationService } from '../../../core/services/navigation.service';
+import { getCompleteCategory } from '../../../shared/utils/get-complete-category';
 
 @Component({
   selector: 'app-dialog-customer',
@@ -67,6 +68,10 @@ export class DialogCustomerComponent implements OnInit {
       this.closeDialog();
       this._navigation.goToWithQueryParams('/clients/form', this.customer.id);
     }
+  }
+
+  getCompleteCategory(key: string): string {
+    return getCompleteCategory(key);
   }
 
   save(): void {

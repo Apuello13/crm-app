@@ -13,21 +13,25 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [{ path: 'home', component: HomeComponent }],
+    canActivate: [authGuard],
   },
   {
     path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((u) => u.UsersModule),
+    canActivate: [authGuard],
   },
   {
     path: 'clients',
     loadChildren: () =>
       import('./admin/admin.module').then((a) => a.AdminModule),
+    canActivate: [authGuard],
   },
   {
     path: 'reports',
     loadChildren: () =>
       import('./reports/reports.module').then((r) => r.ReportsModule),
+    canActivate: [authGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];

@@ -51,7 +51,9 @@
           <div class="col-lg-5">
             <strong>Categoria:</strong>
           </div>
-          <div class="col-lg-7">{{ customer.category }}</div>
+          <div class="col-lg-7">
+            {{ getCompleteCategory(customer.category) }}
+          </div>
         </div>
         <div class="col-lg-6 row mb-1">
           <div class="col-lg-5"><strong>Fecha de creacion:</strong></div>
