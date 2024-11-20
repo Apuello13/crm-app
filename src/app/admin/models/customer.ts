@@ -8,6 +8,7 @@ export interface Customer {
   neighborhood: string;
   program: string;
   category: string;
+  interestRate: string;
   approvedYinn: boolean;
   status: string;
   createdAt: number;

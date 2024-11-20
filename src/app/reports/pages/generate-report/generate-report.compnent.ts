@@ -1,5 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { categories } from '../../../users/utils/category';
 import { report } from '../../utils/reports';
 import { User } from '../../../users/models/user';
@@ -21,6 +26,11 @@ export class GenerateReportComponent implements OnInit {
   formBuilder: FormBuilder = inject(FormBuilder);
   _report: ReportService = inject(ReportService);
   _session: SessionService = inject(SessionService);
+
+  readonly range = new FormGroup({
+    start: new FormControl<Date | null>(new Date()),
+    end: new FormControl<Date | null>(new Date()),
+  });
 
   advisers: User[] = [];
 
@@ -47,6 +57,7 @@ export class GenerateReportComponent implements OnInit {
   }
 
   generateReport(): void {
+    const { start, end } = this.range.value;
     const { report, adviser, categories } = this.filterForm.value;
     const ALL_STUDENT_REPORT = this.reports[Global.ZERO].value;
     const userSession = this._session.getUser();
@@ -54,6 +65,8 @@ export class GenerateReportComponent implements OnInit {
       report === ALL_STUDENT_REPORT ? userSession?.id : adviser;
     const filters: Search = {
       userId,
+      startDate: start?.getTime(),
+      endDate: end?.getTime(),
     };
     this._report.generateReport(filters).subscribe({
       next: (response) => {
@@ -74,5 +87,7 @@ export class GenerateReportComponent implements OnInit {
 
   resetForm(): void {
     this.filterForm.reset();
+    this.range.controls['start'].setValue(new Date());
+    this.range.controls['end'].setValue(new Date());
   }
 }

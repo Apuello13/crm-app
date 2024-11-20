@@ -1,10 +1,9 @@
-import { State } from '../../core/models/state';
-import { CATEGORIES } from '../../utils/categories';
+import { categories } from '../../users/utils/category';
 
 export function getCompleteCategory(key: string): string {
-  const value: string | undefined = CATEGORIES.find(
-    (category: State) => category.key === key
-  )?.value;
+  const value: string | undefined = categories.find(
+    (category: any) => category.value === key
+  )?.label;
   if (!value) return '';
   return value;
 }

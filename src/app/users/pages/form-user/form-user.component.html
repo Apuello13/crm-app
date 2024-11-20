@@ -72,6 +72,19 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Interes</mat-label>
+          <mat-select formControlName="interestRates" multiple>
+            <mat-option
+              *ngFor="let interestRate of interestRates"
+              [value]="interestRate.value"
+            >
+              {{ interestRate.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 </form>

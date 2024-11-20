@@ -7,6 +7,7 @@ import { ROLE_CONTANTS } from '../../utils/role.constant';
 export class SessionService {
   private userKey: string = 'user';
   private _cookie: CookieService = inject(CookieService);
+
   setUser(user: UserLogIn): void {
     this._cookie.set(this.userKey, JSON.stringify(user));
   }

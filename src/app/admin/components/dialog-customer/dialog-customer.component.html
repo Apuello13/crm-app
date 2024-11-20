@@ -61,7 +61,15 @@
             {{ customer.createdAt | date : "dd/MM/YYYY" }}
           </div>
         </div>
-        <div class="col-lg-12 row mt-1 mb-1">
+        <div class="col-lg-6 row mb-1">
+          <div class="col-lg-5">
+            <strong>Interes:</strong>
+          </div>
+          <div class="col-lg-7">
+            {{ getCompleteInterestRate(customer.interestRate) }}
+          </div>
+        </div>
+        <div class="col-lg-12 row mt-1">
           <mat-form-field appearance="outline" class="full-width-field">
             <mat-label>Estado cliente</mat-label>
             <mat-select
@@ -73,6 +81,14 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+        </div>
+        <div class="col-lg-12 text-right">
+          <button
+            class="btn btn-primary-outline"
+            (click)="updateCustomerNotDefinedTwo()"
+          >
+            Mover a no definidos 2
+          </button>
         </div>
       </div>
     </mat-tab>

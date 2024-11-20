@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { errorInterceptor } from './core/services/error.service';
 import { spinnerInterceptor } from './core/services/spinner.service';
 import { tokenInterceptor } from './core/services/token.interceptor';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { tokenInterceptor } from './core/services/token.interceptor';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
+    provideNativeDateAdapter(),
     provideHttpClient(
       withFetch(),
       withInterceptors([errorInterceptor, tokenInterceptor, spinnerInterceptor])

@@ -17,6 +17,7 @@ import { AlertMessage } from '../../../utils/alert-message';
 import { UpdateStatus } from '../../models/update-status';
 import { NavigationService } from '../../../core/services/navigation.service';
 import { getCompleteCategory } from '../../../shared/utils/get-complete-category';
+import { getCompleteInterestRate } from '../../../shared/utils/get-complete-interest-rate';
 
 @Component({
   selector: 'app-dialog-customer',
@@ -62,6 +63,17 @@ export class DialogCustomerComponent implements OnInit {
     });
   }
 
+  updateCustomerNotDefinedTwo(): void {
+    this._alert.confirm().then((result) => {
+      if (result.isConfirmed) {
+        const customerId: number = this.customer.id;
+        this._customer.updateCustomerNotDefinedTow(customerId).subscribe({
+          next: () => this._alert.success(),
+        });
+      }
+    });
+  }
+
   goToForm(status: string): void {
     const ENROLLMENT_STATUS: string = 'ENROLLMENT';
     if (status === ENROLLMENT_STATUS) {
@@ -72,6 +84,10 @@ export class DialogCustomerComponent implements OnInit {
 
   getCompleteCategory(key: string): string {
     return getCompleteCategory(key);
+  }
+
+  getCompleteInterestRate(key: string): string {
+    return getCompleteInterestRate(key);
   }
 
   save(): void {

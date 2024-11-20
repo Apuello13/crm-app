@@ -32,4 +32,11 @@ export class ClientService {
       updateStatus
     );
   }
+
+  updateCustomerNotDefinedTow(id: number) {
+    return this._http.patch(
+      `${this.clientUrl}/update-not-defined/customer/${id}`,
+      {}
+    );
+  }
 }

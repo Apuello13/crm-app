@@ -9,6 +9,7 @@ import { User } from '../../models/user';
 import { AlertMessage } from '../../../utils/alert-message';
 import { USER_MESSAGE } from '../../utils/user-message';
 import { categories } from '../../utils/category';
+import { interestRates } from '../../utils/interest-rates';
 
 @Component({
   selector: 'app-form-user',
@@ -28,6 +29,7 @@ export class FormUserComponent implements OnInit {
 
   roles: BasicLook[] = [];
   categories = categories;
+  interestRates = interestRates;
 
   userForm!: FormGroup;
 
@@ -45,6 +47,7 @@ export class FormUserComponent implements OnInit {
       role: ['', Validators.required],
       password: ['', Validators.required],
       categories: { value: '', disabled: this.isAdviser },
+      interestRates: { value: '', disabled: this.isAdviser },
     });
   }
 
@@ -81,8 +84,13 @@ export class FormUserComponent implements OnInit {
     const roleValue: number = value;
     const ADMIN_ID: number = 1;
     this.isAdviser = roleValue !== ADMIN_ID;
-    if (this.isAdviser) this.userForm.get('categories')?.enable();
-    else this.userForm.get('categories')?.disable();
+    if (this.isAdviser) {
+      this.userForm.get('categories')?.enable();
+      this.userForm.get('interestRates')?.enable();
+    } else {
+      this.userForm.get('categories')?.disable();
+      this.userForm.get('interestRates')?.disable();
+    }
   }
 
   toggleIsPassword(): void {

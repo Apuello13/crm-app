@@ -7,6 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
 
 import { TableComponent } from './components/table/table.component';
@@ -25,6 +26,7 @@ import { TitleComponent } from './components/title/title.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatDatepickerModule,
   ],
   exports: [
     TableComponent,
@@ -34,6 +36,7 @@ import { TitleComponent } from './components/title/title.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDatepickerModule,
   ],
 })
 export class SharedModule {}

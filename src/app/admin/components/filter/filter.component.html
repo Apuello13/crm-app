@@ -9,6 +9,28 @@
           appearance="outline"
           class="full-width-field legacy-appearance"
         >
+          <mat-label>Rango de fechas</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input
+              matStartDate
+              formControlName="start"
+              placeholder="Fecha inicio"
+            />
+            <input matEndDate formControlName="end" placeholder="Fecha fin" />
+          </mat-date-range-input>
+          <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4">
+        <mat-form-field
+          appearance="outline"
+          class="full-width-field legacy-appearance"
+        >
           <mat-label>Nombre</mat-label>
           <input matInput type="text" formControlName="name" />
         </mat-form-field>

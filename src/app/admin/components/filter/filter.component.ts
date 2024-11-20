@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UserLogIn } from '../../../auth/models/user';
 import { SessionService } from '../../../core/services/session.service';
 import { ClientService } from '../../services/client.service';
@@ -17,6 +17,11 @@ export class FilterComponent implements OnInit {
   _client: ClientService = inject(ClientService);
   _clientData: ClientDataService = inject(ClientDataService);
 
+  readonly range = new FormGroup({
+    start: new FormControl<Date | null>(new Date()),
+    end: new FormControl<Date | null>(new Date()),
+  });
+
   user!: UserLogIn;
 
   states: State[] = STATUS;
@@ -32,6 +37,8 @@ export class FilterComponent implements OnInit {
 
   initForm(): void {
     this.filterForm = this.formBuilder.group({
+      startDate: null,
+      endDate: null,
       name: null,
       phone: null,
       program: null,
@@ -45,7 +52,10 @@ export class FilterComponent implements OnInit {
   }
 
   search(): void {
+    const { start, end } = this.range.value;
     const filterValues = { userId: this.user.id, ...this.filterForm.value };
+    filterValues.startDate = start?.getTime();
+    filterValues.endDate = end?.getTime();
     this._client.search(filterValues).subscribe({
       next: (response) => {
         this._clientData.setClients(response);
@@ -55,5 +65,7 @@ export class FilterComponent implements OnInit {
 
   clear(): void {
     this.filterForm.reset();
+    this.range.controls['start'].setValue(new Date());
+    this.range.controls['end'].setValue(new Date());
   }
 }

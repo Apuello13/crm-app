@@ -1,11 +1,11 @@
 export const categories = [
-  { label: 'No definidos', value: 'NOT_DEFINED' },
+  { label: 'Cursos cortos', value: 'SHORT_COURSES' },
   {
-    label: 'Interesado',
-    value: 'INTERESTED',
+    label: 'Colegio Elyon Yireh',
+    value: 'BACHELOR',
   },
   {
-    label: 'Interesado en inscribirse',
-    value: 'INTERESTED_ENROLLING',
+    label: 'Tecnico laboral',
+    value: 'LABOR_TECHNICIAN',
   },
 ];
