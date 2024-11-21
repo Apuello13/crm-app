@@ -7,9 +7,12 @@
 </div>
 <app-table
   [columns]="columns"
-  [rows]="[]"
-  [actions]="[]"
+  [showSearch]="false"
+  [showExcelButton]="false"
+  [rows]="customers"
+  [actions]="actions"
   [fileNameExcel]="'Clientes'"
+  (sendEvent)="getEvent($event)"
   *ngIf="typeView === 'table'; else grid"
 ></app-table>
 <ng-template #grid>

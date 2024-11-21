@@ -12,8 +12,8 @@ export const tokenInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn
 ) => {
   const _session: SessionService = inject(SessionService);
-  if (_session.isExistSession()) {
-    let user: UserLogIn = _session.getUser();
+  let user: UserLogIn | null = _session.getUser();
+  if (user) {
     req = req.clone({
       setHeaders: {
         authorization: `Bearer ${user.token}`,

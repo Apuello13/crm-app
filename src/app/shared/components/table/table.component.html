@@ -29,7 +29,7 @@
           : column.isStatus
           ? getCompleteStatus(element[column.field])
           : column.isDate
-          ? (element[column.field] | date : "dd-MM-YY hh:mm")
+          ? (element[column.field] | date : "dd/MM/YY hh:mm a")
           : element[column.field]
       }}</span>
       <ng-template #elseBlock>

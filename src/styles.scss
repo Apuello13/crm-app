@@ -196,6 +196,12 @@ body {
   margin: 0 0.5rem;
 }
 
+//Tabs
+.mat-mdc-tab-body-content {
+  padding: 1rem;
+  height: auto !important;
+}
+
 //Forms
 .container-menu {
   background: $white;
@@ -209,6 +215,20 @@ body {
   width: 100%;
 }
 
+.mdc-notched-outline__leading {
+  border-left: 0 !important;
+  border-radius: 0 !important;
+}
+
+.mat-mdc-notch-piece {
+  border-top: 0 !important;
+}
+
+.mdc-notched-outline__trailing {
+  border-right: 0 !important;
+  border-radius: 0 !important;
+}
+
 //Margins
 .mt-1 {
   margin-top: 1rem;
@@ -218,7 +238,26 @@ body {
   margin-top: 2rem;
 }
 
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
 //Others
 .hr {
   height: 5px;
+}
+
+//Admin Observation
+.resume {
+  padding: 0 0.5rem;
+  background: $primary;
+  border-radius: 20px;
+  color: $white;
+}
+
+.card-observation {
+  border: 1px solid $softOrange;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.4rem;
 }

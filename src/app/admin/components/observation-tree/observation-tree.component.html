@@ -1,0 +1,27 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let observation of observations">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ observation.date | date : "dd/MM/YY" }}
+      </mat-panel-title>
+      <mat-panel-description>
+        <div class="resume">
+          {{ observation.observations.length }} observaciones
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <div
+        *ngFor="let object of observation.observations"
+        class="card-observation flex align-items-center justify-content-between"
+      >
+        <span>{{ object.time | date : "hh:mm a" }}</span>
+        <span>{{ object.observation }}</span>
+        <i
+          (click)="confirmDelete(object.id)"
+          class="bx bxs-trash-alt text-danger pointer"
+        ></i>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

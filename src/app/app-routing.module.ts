@@ -8,12 +8,11 @@ import { HomeComponent } from './core/pages/home/home.component';
 import { authGuard } from './admin/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home',
+    path: '',
     component: LayoutComponent,
-    children: [{ path: '', component: HomeComponent }],
+    children: [{ path: 'home', component: HomeComponent }],
     canActivate: [authGuard],
   },
   {
@@ -26,6 +25,12 @@ const routes: Routes = [
     path: 'clients',
     loadChildren: () =>
       import('./admin/admin.module').then((a) => a.AdminModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'reports',
+    loadChildren: () =>
+      import('./reports/reports.module').then((r) => r.ReportsModule),
     canActivate: [authGuard],
   },
   { path: '**', component: NotFoundComponent },

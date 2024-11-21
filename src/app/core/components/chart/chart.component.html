@@ -1,0 +1,6 @@
+<canvas *ngIf="type === 'doughnut'; else otherChart" id="pie-chart">{{
+  chart
+}}</canvas>
+<ng-template #otherChart>
+  <canvas id="bar-chart"></canvas>
+</ng-template>
