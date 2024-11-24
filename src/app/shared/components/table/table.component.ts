@@ -45,7 +45,7 @@ export class TableComponent implements OnChanges, AfterViewInit {
 
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSize: number = 5;
-  dataSource = new MatTableDataSource<any>(this.rows);
+  dataSource = new MatTableDataSource<any>([]);
   searchValue: string = '';
 
   _alert: AlertService = inject(AlertService);
@@ -57,9 +57,11 @@ export class TableComponent implements OnChanges, AfterViewInit {
 
   updateDataTable(): void {
     this.dataSource.data = [...this.rows];
-    this.paginateRows();
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+      this.updatePaginator();
+    }
     if (this.table) this.table.renderRows();
-    this.updatePaginator();
   }
 
   updatePaginator() {
@@ -72,16 +74,16 @@ export class TableComponent implements OnChanges, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  getHeadersName(): string[] {
-    return this.columns.map((column) => column.headerName);
-  }
-
   paginateRows(): void {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       const endIndex = startIndex + this.paginator.pageSize;
-      this.dataSource.data = this.rows.slice(startIndex, endIndex);
+      this.dataSource.data = [...this.rows.slice(startIndex, endIndex)];
     }
+  }
+
+  getHeadersName(): string[] {
+    return this.columns.map((column) => column.headerName);
   }
 
   isExistsAction(action: string): boolean {
