@@ -47,7 +47,7 @@ export class FormUserComponent implements OnInit {
       role: ['', Validators.required],
       password: ['', Validators.required],
       categories: { value: '', disabled: this.isAdviser },
-      interestRates: { value: '', disabled: this.isAdviser },
+      interestRates: { value: [], disabled: this.isAdviser },
     });
   }
 
