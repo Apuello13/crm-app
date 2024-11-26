@@ -20,10 +20,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { AppComponent } from './app.component';
 
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { errorInterceptor } from './core/services/error.service';
 import { spinnerInterceptor } from './core/services/spinner.service';
 import { tokenInterceptor } from './core/services/token.interceptor';
-import { provideNativeDateAdapter } from '@angular/material/core';
+
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+import { CUSTOM_DATE_FORMAT } from './core/utils/custom-date-format';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +41,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     AppRoutingModule,
     SweetAlert2Module.forRoot(),
     NgxSpinnerModule,
+    MatNativeDateModule,
   ],
   providers: [
     provideClientHydration(),
@@ -44,6 +52,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
       withInterceptors([errorInterceptor, tokenInterceptor, spinnerInterceptor])
     ),
     CookieService,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMAT },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
